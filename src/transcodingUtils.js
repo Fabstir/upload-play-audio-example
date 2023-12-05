@@ -6,7 +6,9 @@ import { S5Client } from "/node_modules/s5client-js/dist/mjs/index";
  * @returns {Promise<string>} - The CID (Content Identifier) of the uploaded audio file.
  */
 export const uploadFile = async (file) => {
-  const customOptions = { encrypt: false };
+  const customOptions = {
+    encrypt: process.env.REACT_DEFAULT_IS_ENCRYPT === "true",
+  };
   try {
     const headers = {};
     const customClientOptions = {
@@ -156,7 +158,7 @@ export const getTranscodedMetadata = async (cid) => {
   );
 
   try {
-    const response = await fetch(transcodeUrl, { method: "POST" });
+    const response = await fetch(transcodeUrl, { method: "GET" });
     console.log(
       "transcodingUtils: getTranscodedMetadata: response = ",
       response
