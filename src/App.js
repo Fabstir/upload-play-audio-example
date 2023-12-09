@@ -78,7 +78,7 @@ function App() {
 
       <h2>Transcode Audio</h2>
       <button onClick={handleTranscode}>Submit</button>
-      <h2>Refresh Audio</h2>
+      <h2>Fetch Audio</h2>
       <button onClick={handleRefresh}>Submit</button>
       {transcodedAudioUrl && (
         <audio controls>
